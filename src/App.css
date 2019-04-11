@@ -1,19 +1,25 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   text-align: center;
   justify-content: left;
   background-image: url("./images/fossil.jpg");
   height: 100vh;
+  color: rgb(233, 252, 252);
 }
 
 .display {
   /* border: 0.5rem solid rgb(233, 252, 252);
   border-radius: 1rem; */
+  font-family: 'Orbitron', sans-serif;
+  /* font-family: 'Share Tech Mono', monospace; */
   margin-top: 2rem;
   margin-left: 2rem;
-  color: rgb(233, 252, 252);
+  
   height: 50vh;
+  /* color: #daf6ff; */
+  /* text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0); */
 }
 
 .date {
@@ -21,8 +27,8 @@
   flex-direction: row;
   margin-right: 4rem;
   margin-bottom: 2rem;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 4rem;
+  /* font-family: 'Orbitron', sans-serif; */
+  font-size: 3rem;
   justify-content: left;
 }
 
@@ -34,8 +40,8 @@
   display: flex;
   /* flex-direction: row; */
   margin-right: 4rem;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 4rem;  
+  /* font-family: 'Orbitron', sans-serif; */
+  font-size: 3rem;  
 }
 
 .clock-element-main {
@@ -52,11 +58,20 @@
   display: flex;
   flex-direction: row;
   margin-right: 4rem;
-  font-family: 'Orbitron', sans-serif;
+  /* font-family: 'Orbitron', sans-serif; */
   font-size: 3rem;
   justify-content: left;
 }
 
-
+.coordinates {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4rem;
+  /* font-family: 'Orbitron', sans-serif; */
+  font-size: 3rem;
+  justify-content: left;
+  text-align: left;
+  margin-left: 2rem;
+}
 
 
