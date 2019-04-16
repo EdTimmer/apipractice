@@ -4,8 +4,9 @@ class Position extends React.Component {
   state = {
     lat: "",
     lon: "",
-    errorMessage: ""
+    errorMessage: "",
   }
+  
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
