@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log('props in componentDidMount: ', this.props )
+    // console.log('props in componentDidMount: ', this.props )
     window.navigator.geolocation.getCurrentPosition(
       position => this.setState({
         lat: position.coords.latitude,
@@ -23,7 +23,6 @@ class App extends Component {
     )
   }
   render() {
-    console.log(this.props)
     const { lat, lon } = this.state; 
     return (
       <div className="App">
