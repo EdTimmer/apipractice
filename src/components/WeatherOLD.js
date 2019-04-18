@@ -5,8 +5,8 @@ import { resolve } from 'dns';
 const API_KEY = "5abd98ed849a5414b5960c496cc31a3d";
 
 // const lon = getLocation2.coords.longitude;
-let lat;
-let lon;
+// let lat;
+// let lon;
 let coords = "my initial string";
 
 class Weather extends React.Component {
@@ -26,12 +26,9 @@ class Weather extends React.Component {
   componentDidMount() {
     // console.log(this.getLocationWrapper())
     // let that = this;
-    // console.log('getLocation is: ', this.getLocation())
-    this.getLocationWrapper()
-    .then((res) => console.log('res after getLocation was called is: ', res))
-    // .then((res) => this.getWeather(coords["lat"], coords["lon"]))
-
-  }
+    console.log('getLocation is: ', this.getLocation())
+    this.getLocation()
+    .then((res) => this.getWeather(coords["lat"], coords["lon"]))
 
 
     // let firstFunc = async() => {
@@ -87,7 +84,7 @@ class Weather extends React.Component {
 
     // .then((data) => this.setState({temperature: data.main.temp}))
     // .then((data) => console.log('data in the componentDidMount is: ', data))
-  // }
+  }
       // window.navigator.geolocation.getCurrentPosition(
       //   position => this.setState({
       //     lat: position.coords.latitude,
@@ -128,9 +125,9 @@ class Weather extends React.Component {
     return new Promise ((res, rej) => {
       
       //  resolve("success");
-      let result = this.getLocation();
-      res(result);
-      return res;
+      
+      resolve(this.getLocation());
+      return resolve;
       // console.log('result is: ', result)
       // return result;
       
@@ -142,22 +139,21 @@ class Weather extends React.Component {
   getLocation = async () => {
     console.log('getLocation got called')
 
-      await window.navigator.geolocation.getCurrentPosition(
-        // position => this.setState({
-        //   lat: position.coords.latitude,
-        //   lon: position.coords.longitude
-        // }),
-        // err => this.setState({ errorMessage: err.message})
-
+    let p = new Promise ((res, rej) => {
+      window.navigator.geolocation.getCurrentPosition(
         position => {
-          lat = position.coords.latitude;
-          lon = position.coords.longitude;
-        },
-        err => this.setState({ errorMessage: err.message})
-      )   
-
-      return [lat, lon];
-  
+          console.log(position.coords.latitude)
+          coords = {
+            lat: position.coords.latitude, 
+            lon: position.coords.longitude
+          }
+        } 
+      )
+        res(coords);
+        return res;
+    }
+    )
+    return p;
     
   }
 
