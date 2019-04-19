@@ -1,191 +1,57 @@
 import React from 'react';
-import { resolve } from 'dns';
-// import { resolve } from 'path';
 
 const API_KEY = "5abd98ed849a5414b5960c496cc31a3d";
 
-// const lon = getLocation2.coords.longitude;
-let lat;
-let lon;
-let coords = "my initial string";
-
 class Weather extends React.Component {
   state = {
-    lat: undefined,
-    lon: undefined, 
     errorMessage: "",
-    temperature: undefined,
+    temperature: "Loading...",
     city: undefined,
     country: undefined,
     humidity: undefined,
     description: undefined,
-    error: undefined
+    icon: undefined
   }
-
 
   componentDidMount() {
-    // console.log(this.getLocationWrapper())
-    // let that = this;
-    // console.log('getLocation is: ', this.getLocation())
-    this.getLocationWrapper()
-    .then((res) => console.log('res after getLocation was called is: ', res))
-    // .then((res) => this.getWeather(coords["lat"], coords["lon"]))
-
-  }
-
-
-    // let firstFunc = async() => {
-    //   let one = await that.getLocationWrapper();
-    //   return one;
-      
-    //   // .then(() => console.log("HEH"));
-    // }
-    // firstFunc().then((res) => console.log('res is: ', res))
-    // firstFunc().then((res) => console.log('res is: ', res))
-    
-    // .then(() => console.log("CALLED"))
-    // secondFunc();
-    // this.getWeather(coords["lat"], coords["lon"])
-    // .then((res) => this.getWeather(res["lat"], res["lon"]))
-    // .then(() => console.log('I got called'))
-    // .then(res => console.log('res is: ', res))
-    // fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.props.lat}&lon=${this.props.lon}&appid=${API_KEY}&units=metric`)
-    // .then((res) => res.json())
-    // .then((data) => console.log('data in the componentDidMount is: ', data))
-    // const getCoords = new Promise((res, rej) => {
-    //     // this.getLocation()
-    //     res(this.getLocation());
-    //     // let coordsResult = [lat, lon]
-    //     // return coordsResult;
-      
-    // })
-
-    // getCoords
-    // .then((res) => console.log('lat after coords call is: ', lat))
-    // .then((res) => this.getWeather(res["lat"], res["lon"]))
-    // .then(res => console.log('res is: ', res))
-    // .then(() => console.log('coords got called'))
-    // .then(() => {
-    //   fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&${this.props.lon}&appid=${API_KEY}&units=metric`)
-    //   .then((res) => res.json())
-    //   .then((data) => console.log('data in componentDidMount is: ', data))
-
-    // } )
-    
-    
-    // console.log('coords is: ', coords)
-    // const myFunc = async() => {
-    //   await coords;
-    //   await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&${this.props.lon}&appid=${API_KEY}&units=metric`)
-
-
-    //   .then((res) => res.json())
-    //   .then((data) => console.log('data in componentDidMount is: ', data))
-    // }
-    // myFunc()
-    
-
-    // .then((data) => this.setState({temperature: data.main.temp}))
-    // .then((data) => console.log('data in the componentDidMount is: ', data))
-  // }
-      // window.navigator.geolocation.getCurrentPosition(
-      //   position => this.setState({
-      //     lat: position.coords.latitude,
-      //     lon: position.coords.longitude
-      //   }),
-      //   err => this.setState({ errorMessage: err.message})
-      // )
-      // console.log('this.state.lat in componentDidMount: ', this.state.lat)
-      // console.log('this.props.lat in componentDidMount: ', this.props.lat)
-      // if (this.state.lat) {
-      //   this.getWeather()
-      // }
-    
-    // window.navigator.geolocation.getCurrentPosition(
-    //   position => this.setState({
-    //     lat: position.coords.latitude,
-    //     lon: position.coords.longitude
-    //   }),
-    //   err => this.setState({ errorMessage: err.message})
-    // )
-
-    // .then(() => {
-      // fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.props.lat}&lon=${this.props.lon}&appid=${API_KEY}&units=metric`)
-      // .then((res) => res.json())
-      // .then((data) => console.log('data in the componentDidMount is: ', data))
-      // const data = api_call.json();
-    // })
-
-
-    // console.log(this.state.lat)
-    // .then(() => this.getWeather())
-  
-  secondFunc = () => {
-    console.log('i am 2')
-  }
-    
-  getLocationWrapper = () => {
-    return new Promise ((res, rej) => {
-      
-      //  resolve("success");
-      let result = this.getLocation();
-      res(result);
-      return res;
-      // console.log('result is: ', result)
-      // return result;
-      
+    this.getPosition()
+    .then((position) => {      
+      this.getWeather(position.coords.latitude, position.coords.longitude)
     })
+    .catch((err) => {
+      this.setState({ errorMessage: err.message});
+    });
+  }   
+
+  getPosition = (options) => {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    });
   }
-
   
-
-  getLocation = async () => {
-    console.log('getLocation got called')
-
-      await window.navigator.geolocation.getCurrentPosition(
-        // position => this.setState({
-        //   lat: position.coords.latitude,
-        //   lon: position.coords.longitude
-        // }),
-        // err => this.setState({ errorMessage: err.message})
-
-        position => {
-          lat = position.coords.latitude;
-          lon = position.coords.longitude;
-        },
-        err => this.setState({ errorMessage: err.message})
-      )   
-
-      return [lat, lon];
-  
-    
-  }
-
-    
-  
-    
-
-
-  getWeather = async (a, b) => {    
-    // e.preventDefault();
-    console.log("getWeather got called")
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${a}&lon=${b}&appid=${API_KEY}&units=metric`);
+  getWeather = async (lat, lon) => { 
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
-    // this.setState({temperature: data.main.temp})
+    this.setState({
+      city: data.name,
+      temperature: data.main.temp,
+      humidity: data.main.humidity,
+      description: data.weather[0].description,
+      icon: data.weather[0].icon,
+    })
     console.log('data in getWeather is: ', data)
   }
-
   render() {
-    if (!this.props.lat) {
+    if (!this.state.icon) {
       return null;
     }
-    // console.log('props in render in Weather: ', this.props)
-    console.log('state in render is: ', this.state)
     return (
-      <div>
-        
-        <button onClick={() => this.getWeather(coords["lat"], coords["lon"])}>get weather</button>
-        <div>{this.state.temperature}</div>
+      <div>    
+        <div><h2>City: {this.state.city}</h2></div>    
+        <div><h2>Temperature: {this.state.temperature} &#8451;</h2></div>
+        <div><h2>Humindity: {this.state.humidity} %</h2></div>
+        <div><h2>{this.state.description}</h2></div>
+        <img src={`http://openweathermap.org/img/w/${this.state.icon}.png`} />
       </div>
     )
   }
