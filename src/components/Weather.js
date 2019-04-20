@@ -46,12 +46,13 @@ class Weather extends React.Component {
       return null;
     }
     return (
-      <div>    
-        <div><h2>City: {this.state.city}</h2></div>    
-        <div><h2>Temperature: {this.state.temperature} &#8451;</h2></div>
-        <div><h2>Humindity: {this.state.humidity} %</h2></div>
-        <div><h2>{this.state.description}</h2></div>
-        <img src={`http://openweathermap.org/img/w/${this.state.icon}.png`} />
+      <div className="weather">    
+        <span className="weather-item">{this.state.city}</span>    
+        <span className="weather-item">{this.state.temperature} &#8451;</span>
+        <span className="weather-item">{this.state.humidity}% humidity</span>
+        <span className="weather-item">{this.state.description}</span>
+        {/*<br />
+        <img src={`http://openweathermap.org/img/w/${this.state.icon}.png`} />*/}
       </div>
     )
   }

@@ -1,10 +1,10 @@
 .App {
   text-align: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
-  justify-content: left;
-  background-image: url("./images/snow.jpg");
+  justify-content: space-between;
+  background-image: url("./images/cosmos.jpg");
   height: 100vh;
   color: rgb(233, 252, 252);
 }
@@ -13,6 +13,7 @@
   /* border: 0.5rem solid rgb(233, 252, 252);
   border-radius: 1rem; */
   font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
   /* font-family: 'Share Tech Mono', monospace; */
   margin-top: 2rem;
   margin-left: 2rem;
@@ -28,7 +29,7 @@
   margin-right: 4rem;
   margin-bottom: 2rem;
   /* font-family: 'Orbitron', sans-serif; */
-  font-size: 3rem;
+  /* font-size: 3rem; */
   justify-content: left;
 }
 
@@ -41,11 +42,11 @@
   /* flex-direction: row; */
   margin-right: 4rem;
   /* font-family: 'Orbitron', sans-serif; */
-  font-size: 3rem;  
+  /* font-size: 3rem;   */
 }
 
 .clock-element-main {
-  width: 10rem;
+  width: 6rem;
   text-align: left;
 }
 
@@ -59,8 +60,23 @@
   flex-direction: row;
   margin-right: 4rem;
   /* font-family: 'Orbitron', sans-serif; */
-  font-size: 3rem;
+  /* font-size: 3rem; */
   justify-content: left;
+}
+
+.weather {
+  font-family: 'Orbitron', sans-serif;
+  /* font-family: 'Share Tech Mono', monospace; */
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;  
+  height: 20vh;
+  text-align: left;
+}
+
+.weather-item {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .coordinates {
