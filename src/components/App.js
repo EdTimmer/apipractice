@@ -3,6 +3,7 @@ import '../App.css';
 
 import Clock from './Clock';
 import Weather from './Weather';
+import Image from './Image';
 
 class App extends Component {
 
@@ -11,7 +12,8 @@ class App extends Component {
     return (
       <div className="App">
         <Clock />
-        <Weather />        
+        <Weather />   
+        <Image />     
       </div>
     );
   }
