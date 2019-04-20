@@ -5,14 +5,14 @@ class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      day: moment().format("dddd").toString().slice(0, 3).toUpperCase(),
-      month: moment().format("MMMM").slice(0, 3).toUpperCase(),  
+      day: moment().format("dddd").toString(),
+      month: moment().format("MMMM").slice(0, 3),  
       date: moment().format("DD").toString(), 
       year: moment().format("YYYY").toString(),      
       hour: moment().format("HH").toString(),
       minute: moment().format("mm").toString(),
       second: moment().format("ss").toString(),
-      // ampm: moment().format("A").toString(),
+      ampm: moment().format("A").toString(),
     };
   }
 
@@ -29,19 +29,19 @@ class Clock extends React.Component {
 
   tick = () => {
     this.setState({   
-      day: moment().format("dddd").toString().slice(0, 3).toUpperCase(),
-      month: moment().format("MMMM").slice(0, 3).toUpperCase(),
+      day: moment().format("dddd").toString(),
+      month: moment().format("MMMM").slice(0, 3),
       date: moment().format("DD").toString(),        
       year: moment().format("YYYY").toString(),
-      hour: moment().format("HH").toString(),
+      hour: moment().format("hh").toString(),
       minute: moment().format("mm").toString(),
       second: moment().format("ss").toString(),
-      // ampm: moment().format("A").toString(),
+      ampm: moment().format("a").toString(),
     });
   }
 
   render() {
-    const { day, month, date, year, hour, minute, second } = this.state;
+    const { day, month, date, year, hour, minute, second, ampm } = this.state;
     return (
       <div className="display">
 
@@ -55,14 +55,17 @@ class Clock extends React.Component {
       
         <div className="clock">        
           <span className="clock-element-main">{hour}</span>
+          <span className="clock-element-colon">:</span>
           <span className="clock-element-main">{minute}</span>
+          <span className="clock-element-colon">:</span>
           <span className="clock-element-main">{second}</span>
+          <span className="clock-element-main">{ampm}</span>
         </div>
-        <div className="clock-labels">
+        {/*<div className="clock-labels">
           <span className="clock-element-main">hr</span>
           <span className="clock-element-main">min</span>
           <span className="clock-element-main">sec</span>
-        </div>
+    </div>*/}
       
       </div>
 
