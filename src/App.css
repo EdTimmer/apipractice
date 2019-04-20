@@ -1,24 +1,48 @@
 .App {
+  /* text-align: center; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* font-family: 'Orbitron', sans-serif; */
   text-align: center;
+  justify-content: center;
+  /* background-image: url("./images/cosmos.jpg"); */
+  background-color: black;
+  height: 100vh;
+  color: rgb(233, 252, 252);
+}
+
+.row1 {
+  /* text-align: center; */
+  /* background-color: black; */
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
   display: flex;
   flex-direction: row;
   text-align: center;
   justify-content: space-between;
-  background-image: url("./images/cosmos.jpg");
-  height: 100vh;
-  color: rgb(233, 252, 252);
+}
+
+.row2 {
+  /* text-align: center; */
+  /* background-color: black; */
+  /* font-family: 'Share Tech Mono', monospace; */
+  font-family: 'Tajawal', sans-serif;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
 }
 
 .display {
   /* border: 0.5rem solid rgb(233, 252, 252);
   border-radius: 1rem; */
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
+  /* font-family: 'Orbitron', sans-serif;
+  font-size: 2rem; */
   /* font-family: 'Share Tech Mono', monospace; */
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-left: 2rem;
   
-  height: 20vh;
+  /* height: 20vh; */
   /* color: #daf6ff; */
   /* text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0); */
 }
@@ -65,12 +89,12 @@
 }
 
 .weather {
-  font-family: 'Orbitron', sans-serif;
+  /* font-family: 'Orbitron', sans-serif; */
   /* font-family: 'Share Tech Mono', monospace; */
-  font-size: 2rem;
-  margin-top: 2rem;
+  /* font-size: 2rem; */
+  margin-top: 1rem;
   margin-right: 2rem;  
-  height: 20vh;
+  /* height: 20vh; */
   text-align: right;
 }
 
@@ -94,4 +118,21 @@
   margin-left: 2rem;
 }
 
+.image {
+  width: 60rem;
+}
+
+.image-heading {
+  font-size: 2rem;
+}
+
+.image-title {
+  font-size: 2rem;
+  margin: 1rem 3rem;
+}
+
+.image-explanation {
+  font-size: 1rem;
+  margin: 1rem 3rem;
+}
 

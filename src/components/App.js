@@ -11,9 +11,13 @@ class App extends Component {
     // const { lat, lon } = this.state; 
     return (
       <div className="App">
-        <Clock />
-        <Weather />   
-        <Image />     
+        <div className="row1">
+          <Clock />
+          <Weather />
+        </div>
+        <div className="row2">
+          <Image />  
+        </div>          
       </div>
     );
   }

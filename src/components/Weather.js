@@ -106,34 +106,3 @@ class Weather extends React.Component {
 }
 
 export default Weather;
-
-/*
-componentDidMount() {
-    let cachedLat = localStorage.getItem(‘latitude’);
-    let cachedLon = localStorage.getItem(‘longitude’);
-    cachedLat ? 
-     this.setCoordsFromLocalStorage(cachedLat, cachedLon) :
-     this.getCoords();
-   }
-
-   getCoords() {
-    if (window.navigator.geolocation) { 
-     navigator.geolocation.getCurrentPosition((position) => {
-      localStorage.setItem(‘latitude’, position.coords.latitude);
-      localStorage.setItem(‘longitude’, position.coords.longitude);
-      this.callWeatherApi(position.coords.latitude,
-                          position.coords.longitude,
-                          “geo”)
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-    }, (error) => {
-     this.setState({
-      error: error.message,
-     });
-    });
-    } 
-   }
-
-  localStorage.setItem(‘latitude’, position.coords.latitude);
-  localStorage.setItem(‘longitude’, position.coords.longitude);
-*/
