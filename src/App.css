@@ -82,12 +82,22 @@
 }
 
 .moon {
-  /* -webkit-filter: invert(1);
-  filter: invert(1); */
+  /* -webkit-filter: invert(100%); */
+  /* filter: invert(100%); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
   margin-left: 1.5rem;
   margin-right: 1rem;
+  border-radius: 50%;
+  /* border-color: red; */
+  /* border: 2px; */
   /* color: #BDDDFF; */
-  /* background: white; */
+  background: #BDDDFF;
+  /* background-color: white; */
+  color: black;
 }
 
 .sun-item {
