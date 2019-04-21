@@ -16,6 +16,7 @@ class Weather extends React.Component {
     icon: undefined,
     sunrise: undefined,
     sunset: undefined,
+    moonImage: undefined,
   }
 
   componentDidMount() {
@@ -35,6 +36,33 @@ class Weather extends React.Component {
     else {
       alert("Geolocation not available")
     }   
+
+    switch(moonmoji.name) {
+      case("New Moon"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Twemoji_1f311.svg"});
+        break;
+      case("Waxing Crescent"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Twemoji_1f312.svg"});
+        break;
+      case("First Quarter"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/4/40/Twemoji_1f313.svg"});
+        break;
+      case("Waxing Gibbous"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Twemoji_1f314.svg"});
+        break;
+      case("Full Moon"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/7/78/Twemoji_1f315.svg"});
+        break;
+      case("Waning Gibbous"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/d/de/Twemoji_1f316.svg"});
+        break;
+      case("Last Quarter"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/6/67/Twemoji_1f317.svg"});
+        break;
+      case("Waning Crescent"):
+        this.setState({moonImage: "https://upload.wikimedia.org/wikipedia/commons/9/96/Twemoji_1f318.svg"});
+        break;
+    }
   }   
 
   componentWillUnmount() {
@@ -100,6 +128,7 @@ class Weather extends React.Component {
             <span className="weather-item">{this.state.sunset}</span>
             {/*<span className="moon">{moon(moment().format("YYYY").toString())}</span>
             <span className="moon">{moonmoji.emoji}</span>*/}
+            <img style={{height: "1.5rem", marginLeft: "1.5rem", marginRight: "1rem"}} src={this.state.moonImage} />
           </div>       
           
         </div>
