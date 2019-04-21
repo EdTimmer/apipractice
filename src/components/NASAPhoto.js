@@ -25,7 +25,7 @@ class NASAPhoto extends React.Component {
     return (
       <div>   
         <div className="image-heading-container">
-          <a className="image-heading" href="https://apod.nasa.gov/apod/astropix.html" rel="noopener noreferrer" target="_blank">NASA Astronomy Picture Of The Day</a>
+          <a className="image-heading" href="https://apod.nasa.gov/apod/astropix.html" rel="noopener noreferrer" target="_blank">nasa astronomy picture of the day</a>
         </div>        
         {
           imageURL ? 

@@ -59,7 +59,7 @@ class Clock extends React.Component {
           <span className="clock-element-main">{minute}</span>
           <span className="clock-element-colon">:</span>
           <span className="clock-element-main">{second}</span>
-          <span className="clock-element-main">{ampm}</span>
+          <span className="clock-element-ampm">{ampm}</span>
         </div>
         {/*<div className="clock-labels">
           <span className="clock-element-main">hr</span>
