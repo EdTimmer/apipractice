@@ -4,7 +4,7 @@ import '../App.css';
 
 import Clock from './Clock';
 import Weather from './Weather';
-import Image from './Image';
+import NASAPhoto from './NASAPhoto';
 
 class App extends Component {
 
@@ -17,7 +17,7 @@ class App extends Component {
           <Weather />
         </div>
         <div className="row2">
-          <Image />  
+          <NASAPhoto />  
         </div>          
       </div>
     );

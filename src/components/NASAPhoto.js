@@ -1,10 +1,10 @@
 import React from 'react';
 
-class Image extends React.Component {
+class NASAPhoto extends React.Component {
   state = {
-    imageURL: "",
-    title: "",
-    explanation: "",
+    imageURL: undefined,
+    title: undefined,
+    explanation: undefined,
   }
 
   componentDidMount() {
@@ -19,7 +19,6 @@ class Image extends React.Component {
       title: data.title,
       explanation: data.explanation,
     })
-    console.log('data in NASA call: ', data)
   }
   render() {
     const { imageURL, title, explanation } = this.state;
@@ -41,35 +40,4 @@ class Image extends React.Component {
   }
 }
 
-export default Image;
-
-/*
-componentDidMount() {
-    let cachedLat = localStorage.getItem(‘latitude’);
-    let cachedLon = localStorage.getItem(‘longitude’);
-    cachedLat ? 
-     this.setCoordsFromLocalStorage(cachedLat, cachedLon) :
-     this.getCoords();
-   }
-
-   getCoords() {
-    if (window.navigator.geolocation) { 
-     navigator.geolocation.getCurrentPosition((position) => {
-      localStorage.setItem(‘latitude’, position.coords.latitude);
-      localStorage.setItem(‘longitude’, position.coords.longitude);
-      this.callWeatherApi(position.coords.latitude,
-                          position.coords.longitude,
-                          “geo”)
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-    }, (error) => {
-     this.setState({
-      error: error.message,
-     });
-    });
-    } 
-   }
-
-  localStorage.setItem(‘latitude’, position.coords.latitude);
-  localStorage.setItem(‘longitude’, position.coords.longitude);
-*/
+export default NASAPhoto;
