@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NASAPhoto extends React.Component {
+class APOD extends React.Component {
   state = {
     imageURL: undefined,
     title: undefined,
@@ -40,4 +40,4 @@ class NASAPhoto extends React.Component {
   }
 }
 
-export default NASAPhoto;
+export default APOD;

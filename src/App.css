@@ -2,7 +2,7 @@
   text-align: center;
   justify-content: center;
   background-color: black;
-  height: 100vh;
+  /* height: 100vh; */
   color: rgb(233, 252, 252);
 }
 
@@ -90,7 +90,7 @@
   width: 2rem;
   height: 2rem;
   margin-left: 1.5rem;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
   border-radius: 50%;
   /* border-color: red; */
   /* border: 2px; */
@@ -116,11 +116,13 @@
 }
 
 .image {
-  max-height: 40rem;
+  min-width: 70rem;
+  max-width: 70rem;
 }
 
 .image-heading-container {
-  font-size: 2rem;
+  /* font-size: 2rem; */
+ 
   margin: 1rem 3rem 1rem 3rem;
 }
 
@@ -128,6 +130,7 @@
   text-decoration: none;
   color: rgb(233, 252, 252);
   font-size: 2.5rem;
+  font-variant: small-caps;
   /* font-weight: bold; */
   letter-spacing: 1px;
   margin: 0 3rem;
@@ -140,9 +143,9 @@
 
 .image-explanation {
   font-size: 1rem;
-  margin: 1rem 3rem;
-  max-height: 3rem;
-  overflow: auto;
+  margin: 0 3rem 1rem 3rem;
+  /* max-height: 3rem; */
+  /* overflow: auto; */
   padding: 5px;
 }
 

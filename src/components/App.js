@@ -4,12 +4,11 @@ import '../App.css';
 
 import Clock from './Clock';
 import Weather from './Weather';
-import NASAPhoto from './NASAPhoto';
+import APOD from './APOD';
 
 class App extends Component {
 
   render() {
-    // const { lat, lon } = this.state; 
     return (
       <div className="App">
         <div className="row1">
@@ -17,7 +16,7 @@ class App extends Component {
           <Weather />
         </div>
         <div className="row2">
-          <NASAPhoto />  
+          <APOD />  
         </div>        
       </div>
     );
