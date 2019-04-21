@@ -1,4 +1,5 @@
 import React from 'react';
+import Spinner from './Spinner';
 
 class APOD extends React.Component {
   state = {
@@ -31,7 +32,7 @@ class APOD extends React.Component {
           imageURL ? 
             (<a className="image-heading" href="https://apod.nasa.gov/apod/astropix.html" rel="noopener noreferrer" target="_blank"><img className="image" src={imageURL} alt="astronomy_picture_of_the_day" /></a>)        
             : 
-            (<span>Loading...</span>)
+            (<Spinner />)
         }
         <div className="image-title">{title}</div>
         <div className="image-explanation">{explanation}</div>

@@ -9,6 +9,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
+    "react-spinners": "^0.5.4",
     "the-moon": "^1.1.0"
   },
   "scripts": {
