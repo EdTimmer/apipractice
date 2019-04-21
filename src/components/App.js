@@ -18,7 +18,7 @@ class App extends Component {
         </div>
         <div className="row2">
           <NASAPhoto />  
-        </div>          
+        </div>        
       </div>
     );
   }
