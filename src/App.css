@@ -82,9 +82,12 @@
 }
 
 .moon {
+  /* -webkit-filter: invert(1);
+  filter: invert(1); */
   margin-left: 1.5rem;
   margin-right: 1rem;
-  color: #BDDDFF;
+  /* color: #BDDDFF; */
+  /* background: white; */
 }
 
 .sun-item {
@@ -103,7 +106,7 @@
 }
 
 .image {
-  height: 40rem;
+  max-height: 40rem;
 }
 
 .image-heading-container {
@@ -128,5 +131,8 @@
 .image-explanation {
   font-size: 1rem;
   margin: 1rem 3rem;
+  max-height: 3rem;
+  overflow: auto;
+  padding: 5px;
 }
 
