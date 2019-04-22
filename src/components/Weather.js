@@ -5,6 +5,8 @@ let moonmoji = require('moonmoji')();
 
 class Weather extends React.Component {
   state = {
+    lat: undefined,
+    lon: undefined,
     errorMessage: undefined,
     temperatureC: undefined,
     temperatureF: undefined,
@@ -20,10 +22,7 @@ class Weather extends React.Component {
 
   componentDidMount() {
     if (navigator.geolocation) {
-      this.timerID = setInterval(
-        () => this.tick(),
-        300000
-      );
+
       this.getPosition()
       .then((position) => {      
         this.getWeather(position.coords.latitude, position.coords.longitude)
@@ -35,6 +34,11 @@ class Weather extends React.Component {
     else {
       alert("Geolocation not available")
     }   
+
+    this.timerID = setInterval(
+      () => this.getWeather(this.state.lat, this.state.lon),
+      600000
+    );
 
     switch(moonmoji.name) {
       case("New Moon"):
@@ -71,15 +75,15 @@ class Weather extends React.Component {
     clearInterval(this.timerID);
   }
 
-  tick = () => {
-    this.getPosition()
-    .then((position) => {      
-      this.getWeather(position.coords.latitude, position.coords.longitude)
-    })
-    .catch((err) => {
-      this.setState({ errorMessage: err.message });
-    });
-  }
+  // tick = () => {
+  //   this.getPosition()
+  //   .then((position) => {      
+  //     this.getWeather(position.coords.latitude, position.coords.longitude)
+  //   })
+  //   .catch((err) => {
+  //     this.setState({ errorMessage: err.message });
+  //   });
+  // }
 
   getPosition = (options) => {
     return new Promise(function (resolve, reject) {
@@ -87,10 +91,12 @@ class Weather extends React.Component {
     });
   }
   
-  getWeather = async (lat, lon) => { 
+  getWeather = async (lat, lon) => {     
     const api_call = await fetch(`//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`);
     const data = await api_call.json();
     this.setState({
+      lat: lat,
+      lon: lon,
       city: data.name,
       temperatureC: Math.round(data.main.temp),
       temperatureF: Math.round(data.main.temp * 1.8 + 32),
@@ -100,8 +106,9 @@ class Weather extends React.Component {
       // sunrise: this.getTimeFromUnixTimeStamp(data.sys.sunrise),
       sunrise: moment.unix(data.sys.sunrise).format("hh:mm a"),
       sunset: moment.unix(data.sys.sunset).format("hh:mm a"),
-      // sunset: this.getTimeFromUnixTimeStamp(data.sys.sunset),
+      // sunset: this.getTimeFromUnixTimeStamp(data.sys.sunset),      
     })
+    console.log('state in getWeather is: ', this.state)
   }
 
   render() {
@@ -109,7 +116,7 @@ class Weather extends React.Component {
       return (
         <div className="weather">   
           <div>
-            <span className="weather-item">{this.state.city}</span>    
+            {/*<span className="weather-item">{this.state.city}</span>*/}    
             <span className="weather-item">{this.state.temperatureC} &deg;C</span>
             <span className="weather-item">{this.state.temperatureF} &deg;F</span>
             <span className="weather-item">humidity {this.state.humidity}%</span>
