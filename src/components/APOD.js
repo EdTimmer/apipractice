@@ -1,9 +1,21 @@
 import React from 'react';
 import Spinner from './Spinner';
 
+const ImageOrVideo = ({ mediaType, url }) => (
+  <div>
+      {
+          mediaType === "image" ? (
+            <a className="image-heading" href="https://apod.nasa.gov/apod/astropix.html" rel="noopener noreferrer" target="_blank"><img className="image" src={url} alt="astronomy_picture_of_the_day" /></a>
+          ) :
+          (<iframe className="video" src={url} title="video"></iframe>)
+      }
+  </div>
+);
+
 class APOD extends React.Component {
   state = {
-    imageURL: undefined,
+    url: undefined,
+    mediaType: undefined,
     title: undefined,
     explanation: undefined,
   }
@@ -15,22 +27,25 @@ class APOD extends React.Component {
   getNASA = async () => {
     const api_call = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}`);
     const data = await api_call.json();
+    console.log('nasa data: ', data)
     this.setState({
-      imageURL: data.url,
+      url: data.url,
+      mediaType: data.media_type,
       title: data.title,
       explanation: data.explanation,
     })
+    console.log('state is: ', this.state)
   }
   render() {
-    const { imageURL, title, explanation } = this.state;
+    const { mediaType, url, title, explanation } = this.state;
     return (
       <div>   
         <div className="image-heading-container">
           <a className="image-heading" href="https://apod.nasa.gov/apod/astropix.html" rel="noopener noreferrer" target="_blank">nasa astronomy picture of the day</a>
         </div>        
         {
-          imageURL ? 
-            (<a className="image-heading" href="https://apod.nasa.gov/apod/astropix.html" rel="noopener noreferrer" target="_blank"><img className="image" src={imageURL} alt="astronomy_picture_of_the_day" /></a>)        
+          url ? 
+            (<ImageOrVideo mediaType={mediaType} url={url} />)        
             : 
             (<Spinner />)
         }

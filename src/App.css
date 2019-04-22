@@ -2,7 +2,7 @@
   text-align: center;
   justify-content: center;
   background-color: black;
-  /* height: 100vh; */
+  min-height: 100vh;
   color: rgb(233, 252, 252);
 }
 
@@ -116,8 +116,12 @@
 }
 
 .image {
-  min-width: 70rem;
-  max-width: 70rem;
+  width: 70rem;
+}
+
+.video {
+  width: 70rem;
+  height: 52.5rem;
 }
 
 .image-heading-container {
