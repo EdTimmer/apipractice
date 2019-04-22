@@ -27,14 +27,14 @@ class APOD extends React.Component {
   getNASA = async () => {
     const api_call = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}`);
     const data = await api_call.json();
-    console.log('nasa data: ', data)
+    // console.log('nasa data: ', data)
     this.setState({
       url: data.url,
       mediaType: data.media_type,
       title: data.title,
       explanation: data.explanation,
     })
-    console.log('state is: ', this.state)
+    // console.log('state is: ', this.state)
   }
   render() {
     const { mediaType, url, title, explanation } = this.state;
