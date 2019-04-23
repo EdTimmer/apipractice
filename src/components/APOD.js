@@ -37,6 +37,7 @@ class APOD extends React.Component {
     // console.log('state is: ', this.state)
   }
   render() {
+    console.log('state in APOD: ', this.state)
     const { mediaType, url, title, explanation } = this.state;
     return (
       <div>   

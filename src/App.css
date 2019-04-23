@@ -116,7 +116,7 @@
 }
 
 .image {
-  width: 70rem;
+  width: 60rem;
 }
 
 .video {
@@ -153,3 +153,6 @@
   padding: 5px;
 }
 
+.slash {
+  margin: 0 1rem;
+}

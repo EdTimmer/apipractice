@@ -116,9 +116,12 @@ class Weather extends React.Component {
       return (
         <div className="weather">   
           <div>
-            {/*<span className="weather-item">{this.state.city}</span>*/}    
-            <span className="weather-item">{this.state.temperatureC} &deg;C</span>
-            <span className="weather-item">{this.state.temperatureF} &deg;F</span>
+            {/*<span className="weather-item">{this.state.city}</span>*/} 
+            <span className="weather-item">
+              {this.state.temperatureC} &deg;C 
+              <span className="slash">/</span>
+              <span>{this.state.temperatureF} &deg;F</span>
+            </span>            
             <span className="weather-item">humidity {this.state.humidity}%</span>
             <span className="weather-item">{this.state.description}</span>
           </div>         
