@@ -1,16 +1,6 @@
 import React from 'react';
 import Spinner from './Spinner';
-
-const ImageOrVideo = ({ mediaType, url }) => (
-  <div>
-      {
-          mediaType === "image" ? (
-            <a className="image-heading" href="https://apod.nasa.gov/apod/astropix.html" rel="noopener noreferrer" target="_blank"><img className="image" src={url} alt="astronomy_picture_of_the_day" /></a>
-          ) :
-          (<iframe className="video" src={url} title="video"></iframe>)
-      }
-  </div>
-);
+import Media from './Media';
 
 class APOD extends React.Component {
   state = {
@@ -46,7 +36,7 @@ class APOD extends React.Component {
         </div>        
         {
           url ? 
-            (<ImageOrVideo mediaType={mediaType} url={url} />)        
+            (<Media mediaType={mediaType} url={url} />)        
             : 
             (<Spinner />)
         }
