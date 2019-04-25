@@ -108,7 +108,6 @@ class Weather extends React.Component {
       sunset: moment.unix(data.sys.sunset).format("hh:mm a"),
       // sunset: this.getTimeFromUnixTimeStamp(data.sys.sunset),      
     })
-    console.log('state in getWeather is: ', this.state)
   }
 
   render() {
